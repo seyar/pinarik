@@ -7,7 +7,7 @@ body {
     margin: auto;
 }
 .calendar {
-    height: 400px;
+    height: 650px;
     background: url("./square.svg");
 }
 .calendar__fill {
