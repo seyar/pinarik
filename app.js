@@ -28,7 +28,7 @@ App.prototype.setBirthDay = function (birth) {
 App.prototype.render = function () {
     var fill = document.querySelector('.calendar__fill');
     fill.style.width = AMOUNT_YEAR_WEEKS * (this.width + this.padding) + 'px';
-    fill.style.height = this._getFullYears(this.birth.getFullYear()) * (this.width + this.padding) + 'px';
+    fill.style.height = this._getFullYears(this.birth) * (this.width + this.padding) + 'px';
 
     var weeks = document.querySelector('.calendar__fill-weeks');
     weeks.style.width = this._getWeeksAmount(this.birth) * (this.width + this.padding) + 'px';
@@ -36,11 +36,14 @@ App.prototype.render = function () {
 
 /**
  * Calculates full years from given date
- * @param {Number} year
+ * @param {Date} birthday
  * @returns {String}
  */
-App.prototype._getFullYears = function (year) {
-    return ((new Date()).getFullYear() - year).toFixed(1);
+App.prototype._getFullYears = function (birthday) {
+    var now = new Date();
+    //birthday.setFullYear(now.getFullYear());
+    var res = (now.getTime() - birthday.getTime()) / (1000 * 60 * 60 * 24 * 365);
+    return Math.floor(res);
 };
 
 /**
@@ -51,9 +54,10 @@ App.prototype._getFullYears = function (year) {
  */
 App.prototype._getWeeksAmount = function (birthday) {
     var now = new Date();
-    birthday.setFullYear(now.getFullYear());
-    var res = (now.getTime() - birthday.getTime()) / (1000 * 60 * 60 * 24 * 7);
-    return Math.floor(res);
+    //birthday.setFullYear(now.getFullYear());
+    var res = (now.getTime() - birthday.getTime()) % (1000 * 60 * 60 * 24 * 365);
+    res = res / (1000 * 60 * 60 * 24 * 7);
+    return Math.ceil(res);
 };
 
 var run = function () {
