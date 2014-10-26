@@ -8,6 +8,7 @@ header {
 .container {
     width: 980px;
     margin: auto;
+    position: relative;
 }
 .calendar {
     height: 1170px; /* 65 лет * (12px + 6px) */
@@ -26,4 +27,19 @@ header {
     background: url(./filled.svg);
     transition-property: width;
     transition-delay: 400ms;
+}
+.years {
+    margin: 0;
+    padding: 0;
+    counter-reset: li;
+    position: absolute;
+    left: -23px;
+}
+.years li {
+    margin: 72px 0 0;
+    list-style: none;
+}
+.years li:before {
+    counter-increment: li 5;
+    content: counter(li);
 }
