@@ -14,10 +14,16 @@ header {
     background: url("./square.svg");
 }
 .calendar__fill {
+    height: 0;
     background: url(./filled.svg);
+    transition-property: height;
+    transition-duration: 0.8s;
+    transition-timing-function: ease;
 }
 .calendar__fill-weeks {
     height: 12px;
     width: 0;
     background: url(./filled.svg);
+    transition-property: width;
+    transition-delay: 400ms;
 }
