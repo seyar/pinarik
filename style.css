@@ -2,19 +2,22 @@ body {
     margin: 0;
     padding: 0;
 }
+header {
+    margin: 1em 0 3em 0;
+}
 .container {
     width: 980px;
     margin: auto;
 }
 .calendar {
-    height: 650px;
+    height: 1170px; /* 65 лет * (12px + 6px) */
     background: url("./square.svg");
 }
 .calendar__fill {
     background: url(./filled.svg);
 }
 .calendar__fill-weeks {
-    height: 7px;
+    height: 12px;
     width: 0;
     background: url(./filled.svg);
 }

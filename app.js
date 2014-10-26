@@ -1,12 +1,30 @@
 var AMOUNT_YEAR_WEEKS = 53;
 
-function App() {
-    this.width = 7;
-    this.height = 7;
-    this.birth = new Date(1985, 9, 7);
-    this.padding = 3;
+/**
+ * Calculates what part of live you already lived
+ *
+ * @param {Date} birth
+ * @constructor
+ */
+function App(birth) /** @lends App.prototype */ {
+    this.width = 12;
+    this.height = 12;
+    this.birth = birth || new Date(1985, 9, 7);
+    this.padding = 6;
 };
 
+/**
+ * Sets birthday
+ *
+ * @param {Date} birth
+ */
+App.prototype.setBirthDay = function (birth) {
+    this.birth = birth;
+};
+
+/**
+ * Calculates styles and apply on page
+ */
 App.prototype.render = function () {
     var fill = document.querySelector('.calendar__fill');
     fill.style.width = AMOUNT_YEAR_WEEKS * (this.width + this.padding) + 'px';
@@ -16,10 +34,21 @@ App.prototype.render = function () {
     weeks.style.width = this._getWeeksAmount(this.birth) * (this.width + this.padding) + 'px';
 };
 
+/**
+ * Calculates full years from given date
+ * @param {Number} year
+ * @returns {String}
+ */
 App.prototype._getFullYears = function (year) {
     return ((new Date()).getFullYear() - year).toFixed(1);
 };
 
+/**
+ * Calculates number of full weeks from birthday
+ *
+ * @param {Date} birthday
+ * @returns {Number}
+ */
 App.prototype._getWeeksAmount = function (birthday) {
     var now = new Date();
     birthday.setFullYear(now.getFullYear());
@@ -27,5 +56,19 @@ App.prototype._getWeeksAmount = function (birthday) {
     return Math.floor(res);
 };
 
-var app = new App();
-app.render();
+var run = function () {
+    var day = document.querySelector('[name=birth-day]').value;
+    var month = Number(document.querySelector('[name=birth-month]').value) - 1;
+    var year = document.querySelector('[name=birth-year]').value;
+    var app = new App(new Date(year, month, day));
+    app.render();
+};
+
+var renderButton = document.getElementById('calculate');
+renderButton.addEventListener('click', run);
+
+var form = document.forms[0];
+form.removeEventListener('submit', function () {
+    run();
+    return false;
+});
