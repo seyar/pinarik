@@ -43,7 +43,7 @@ App.prototype._getFullYears = function (birthday) {
     var now = new Date();
     //birthday.setFullYear(now.getFullYear());
     var res = (now.getTime() - birthday.getTime()) / (1000 * 60 * 60 * 24 * 365);
-    return Math.floor(res);
+    return Math.floor(res) - 1;
 };
 
 /**
@@ -60,6 +60,9 @@ App.prototype._getWeeksAmount = function (birthday) {
     return Math.ceil(res);
 };
 
+/**
+ * Starts calculations
+ */
 var run = function () {
     var day = document.querySelector('[name=birth-day]').value;
     var month = Number(document.querySelector('[name=birth-month]').value) - 1;

@@ -22,7 +22,7 @@ header {
     transition-timing-function: ease;
 }
 .calendar__fill-weeks {
-    height: 12px;
+    height: 14px;
     width: 0;
     background: url(./filled.svg);
     transition-property: width;
