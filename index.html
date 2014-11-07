@@ -8,9 +8,56 @@
 <body>
 <div class="container">
     <header>
-        <form>
-            День – <input type="text" name="birth-day"/>,
-            Месяц – <input type="text" name="birth-month"/>,
+        <h1>Календарик пинарик</h1>
+        <form class="form">
+            День – <select name="birth-day">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+        </select>,
+
+            Месяц – <select name="birth-month">
+                        <option value="1">январь</option>
+                        <option value="2">февраль</option>
+                        <option value="3">март</option>
+                        <option value="4">апрель</option>
+                        <option value="5">май</option>
+                        <option value="6">июнь</option>
+                        <option value="7">июль</option>
+                        <option value="8">август</option>
+                        <option value="9">сентябрь</option>
+                        <option value="10">октябрь</option>
+                        <option value="11">ноябрь</option>
+                        <option value="12">декабрь</option>
+        </select> ,
             Год – <input type="text" name="birth-year"/>
             <input type="button" id="calculate" value="Рассчитать"/>
         </form>
@@ -35,6 +82,7 @@
         <div class="calendar__fill-weeks"></div>
     </div>
 </div>
+<script src="http://yastatic.net/jquery/2.1.1/jquery.min.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>

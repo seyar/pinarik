@@ -26,12 +26,12 @@ App.prototype.setBirthDay = function (birth) {
  * Calculates styles and apply on page
  */
 App.prototype.render = function () {
-    var fill = document.querySelector('.calendar__fill');
-    fill.style.width = AMOUNT_YEAR_WEEKS * (this.width + this.padding) + 'px';
-    fill.style.height = this._getFullYears(this.birth) * (this.width + this.padding) + 'px';
+    var fill = $('.calendar__fill');
+    fill.width(AMOUNT_YEAR_WEEKS * (this.width + this.padding) + 'px');
+    fill.height(this._getFullYears(this.birth) * (this.width + this.padding) + 'px');
 
-    var weeks = document.querySelector('.calendar__fill-weeks');
-    weeks.style.width = this._getWeeksAmount(this.birth) * (this.width + this.padding) + 'px';
+    var weeks = $('.calendar__fill-weeks');
+    weeks.width(this._getWeeksAmount(this.birth) * (this.width + this.padding) + 'px');
 };
 
 /**
@@ -64,18 +64,16 @@ App.prototype._getWeeksAmount = function (birthday) {
  * Starts calculations
  */
 var run = function () {
-    var day = document.querySelector('[name=birth-day]').value;
-    var month = Number(document.querySelector('[name=birth-month]').value) - 1;
-    var year = document.querySelector('[name=birth-year]').value;
+    var day = $('[name=birth-day]').val();
+    var month = Number($('[name=birth-month]').val()) - 1;
+    var year = $('[name=birth-year]').val();
     var app = new App(new Date(year, month, day));
     app.render();
 };
 
-var renderButton = document.getElementById('calculate');
-renderButton.addEventListener('click', run);
+$('#calculate').on('click', run);
 
-var form = document.forms[0];
-form.removeEventListener('submit', function () {
+$('.form').on('submit', function () {
     run();
     return false;
 });
